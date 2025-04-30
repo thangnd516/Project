@@ -1,0 +1,27 @@
+@import "tailwindcss";
+.white-background {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .black-background {
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  header {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .action-icon {
+    cursor: pointer;
+  }
+  
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+  
