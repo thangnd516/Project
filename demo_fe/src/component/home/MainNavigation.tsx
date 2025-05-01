@@ -1,9 +1,8 @@
 // MainNavigation Component
-import React from 'react';
-import { Heart, Search, ShoppingCart, ChevronDown, User } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 export const MainNavigation = () => {
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-white text-black border-y border-[#e0e0e0]">
       <div className="container mx-auto">
         <div className="flex items-center">
           <div className="py-3 px-4 bg-blue-600">

@@ -3,7 +3,7 @@ import { ProductCardProps } from './ProductCard';
 const products: ProductCardProps['product'][] = [
   {
     title: 'Baby Diaper Cream',
-    image: '/api/placeholder/400/320',
+    image: 'https://wordpressthemes.live/WCG10/WCM230_healthmart/medicine04/wp-content/uploads/2023/10/19-276x276.jpg',
     badge: 'NEW',
     price: '$18.99',
     oldPrice: '$24.99',
@@ -12,7 +12,7 @@ const products: ProductCardProps['product'][] = [
   },
   {
     title: 'Anti-Hair Fall Daily Use Shampoo',
-    image: '/api/placeholder/400/320',
+    image: 'https://wordpressthemes.live/WCG10/WCM230_healthmart/medicine04/wp-content/uploads/2023/10/17_02-276x276.jpg',
     badge: 'SALE',
     price: '$10.25',
     oldPrice: '$15.99',
@@ -21,7 +21,7 @@ const products: ProductCardProps['product'][] = [
   },
   {
     title: 'Meditation Body Scrub',
-    image: '/api/placeholder/400/320',
+    image: 'https://wordpressthemes.live/WCG10/WCM230_healthmart/medicine04/wp-content/uploads/2023/10/15_02-276x276.jpg',
     badge: 'HOT',
     price: '$22.50',
     oldPrice: '$29.99',
@@ -30,7 +30,7 @@ const products: ProductCardProps['product'][] = [
   },
   {
     title: 'Natural Detox Sugar Management',
-    image: '/api/placeholder/400/320',
+    image: 'https://wordpressthemes.live/WCG10/WCM230_healthmart/medicine04/wp-content/uploads/2023/10/14_02-276x276.jpg',
     badge: 'SALE',
     price: '$19.99',
     oldPrice: '$24.99',
@@ -39,7 +39,7 @@ const products: ProductCardProps['product'][] = [
   },
   {
     title: "Organic Women's Wellness Supplement",
-    image: '/api/placeholder/400/320',
+    image: 'https://wordpressthemes.live/WCG10/WCM230_healthmart/medicine04/wp-content/uploads/2023/10/16_02-276x276.jpg',
     badge: 'HOT',
     price: '$27.50',
     oldPrice: '$35.99',
@@ -48,7 +48,7 @@ const products: ProductCardProps['product'][] = [
   },
   {
     title: 'Support Anti-Pain Relief Capsules',
-    image: '/api/placeholder/400/320',
+    image: 'https://wordpressthemes.live/WCG10/WCM230_healthmart/medicine04/wp-content/uploads/2023/10/18_02-276x276.jpg',
     badge: 'SALE',
     price: '$15.99',
     oldPrice: '$23.50',

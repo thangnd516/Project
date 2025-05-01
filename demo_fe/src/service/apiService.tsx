@@ -28,16 +28,22 @@ interface Product {
   typeProduct?: string;
 }
 
-// apiService.ts
-export const getAll = async (
-  page: number,
-  sortBy: string,
-  price: string,
-  color: string,
-  typeProduct: string,
-  nameProduct: string
-): Promise<{ content: Product[] }> => {
-  // Thay thế đường dẫn URL cho phù hợp
-  const res = await fetch(`/api/products?page=${page}&sortBy=${sortBy}&price=${price}&color=${color}&typeProduct=${typeProduct}&nameProduct=${nameProduct}`);
-  return res.json();
-};
+
+
+export const  getAll=async () =>{
+  try{
+      const  res = await axios.get(`http://localhost:8080/api/medicines`);
+      return res.data;
+  }catch (e) {
+      console.log(e)
+  }
+}
+export const  getAllType=async () =>{
+  try{
+      const  res = await axios.get(`http://localhost:8080/api/categories`);
+      return res.data;
+  }catch (e) {
+      console.log(e)
+  }
+}
+

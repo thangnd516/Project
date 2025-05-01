@@ -11,9 +11,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ categories, onSearch }) => {
   };
 
   return (
-    <div className="flex rounded overflow-hidden border w-full max-w-3xl">
+    <div style={{
+      borderRadius: "20px",
+      border: "1px solid #e5e5e5"
+    }} className="flex rounded overflow-hidden border w-full max-w-3xl">
       <select
-        className="bg-white border-r px-3 py-2 text-sm focus:outline-none"
+        style={{
+            borderRight: "1px solid #e5e5e5"
+        }
+        }
+        className="bg-white px-3 py-2 text-sm focus:outline-none"
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
       >
@@ -30,7 +37,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ categories, onSearch }) => {
       />
       <button
         onClick={handleSubmit}
-        className="bg-blue-600 text-white px-4 flex items-center justify-center hover:bg-blue-700"
+        className=" px-4 flex items-center justify-center"
       >
         <Search size={18} />
       </button>

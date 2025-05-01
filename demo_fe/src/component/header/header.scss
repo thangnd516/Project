@@ -1,8 +1,40 @@
 .header-wrap {
+  padding: 10px 0px;
   .header-container {
     .image-logo {
       height: auto;
       width: 110px
     }
+  }
+}
+
+.contact-header-wrap {
+  display: flex;
+
+  .contact-content-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 10px;
+    font-size: 15px;
+  }
+}
+
+.cart-header-wrap {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  .cart-icon-header {
+      color: rgb(51, 165, 142);
+  }
+  .cart-content-header {
+    display: flex;
+    align-items: start;
+    text-align: center;
+    flex-direction: column;
+    font-size: 15px;
+    padding-left: 10px;
   }
 }
