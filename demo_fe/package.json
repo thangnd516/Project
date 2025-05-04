@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.16.1",
+    "@ant-design/icons": "^5.2.4",
+    "@chakra-ui/icons": "^2.1.0",
+    "@chakra-ui/modal": "^2.3.0",
+    "@chakra-ui/react": "^2.8.0",
+    "@chakra-ui/react-use-disclosure": "^2.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -42,6 +46,7 @@
     "sweetalert2": "^11.17.2"
   },
   "devDependencies": {
+    "@chakra-ui/button": "^2.1.0",
     "@eslint/js": "^9.21.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@tailwindcss/postcss": "^4.1.3",

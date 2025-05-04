@@ -1,15 +1,17 @@
 import './App.css';
+import CartPage from './component/cart';
+import ProductDetail from './component/detail';
 import HealthMartApp from './component/home/HomePage';
-import { ProductList } from './component/product';
-import { Provider } from "@/components/ui/provider"
+import ProductsPage from './component/product';
 function App() {
 
   return (
-    <Provider>
+    <>
 
       {/* <HealthMartApp /> */}
-      <ProductList />
-    </Provider>
+      {/* <ProductsPage /> */}
+      <CartPage/>
+    </>
 
   );
 }

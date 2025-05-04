@@ -8,13 +8,11 @@ export type ProductCardProps = {
     badge?: 'NEW' | 'SALE' | 'HOT';
     price: string;
     oldPrice?: string;
-    rating: number;
-    reviews: number;
   };
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { title, image, badge, price, oldPrice, rating, reviews } = product;
+  const { title, image, badge, price, oldPrice } = product;
 
   return (
     <div className="flex flex-col justify-between h-full bg-white rounded-lg shadow overflow-hidden">
@@ -41,19 +39,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="p-4 flex flex-col grow">
         <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2">{title}</h3>
 
-        {/* Stars */}
-        <div className="flex items-center mb-2">
-          <div className="flex text-yellow-400">
-            {[...Array(Math.floor(rating))].map((_, i) => (
-              <div key={i}>★</div>
-            ))}
-            {rating % 1 > 0 && <div>★</div>}
-            {[...Array(5 - Math.ceil(rating))].map((_, i) => (
-              <div key={i + Math.ceil(rating)} className="text-gray-300">★</div>
-            ))}
-          </div>
-          <span className="text-gray-500 text-sm ml-1">({reviews})</span>
-        </div>
 
         {/* Price */}
         <div className="flex items-center mb-3">
