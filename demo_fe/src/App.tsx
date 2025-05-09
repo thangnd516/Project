@@ -1,3 +1,4 @@
+import { Route, Router, Routes } from 'react-router-dom';
 import './App.css';
 import CartPage from './component/cart';
 import ProductDetail from './component/detail';
@@ -7,10 +8,10 @@ function App() {
 
   return (
     <>
-
-      {/* <HealthMartApp /> */}
-      {/* <ProductsPage /> */}
-      <CartPage/>
+      <Routes>
+        <Route path="/" element={<ProductsPage />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+      </Routes>
     </>
 
   );

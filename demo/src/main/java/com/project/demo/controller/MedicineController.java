@@ -1,6 +1,9 @@
 package com.project.demo.controller;
 
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,9 +11,9 @@ import com.project.demo.DTO.MedicineDTO;
 import com.project.demo.model.Image;
 import com.project.demo.model.Medicine;
 import com.project.demo.service.MedicineService;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @RestController
 @RequestMapping("/api/medicines")
@@ -19,21 +22,46 @@ public class MedicineController {
     @Autowired
     private MedicineService medicineService;
 
-    @GetMapping("")
-    public ResponseEntity<List<MedicineDTO>> getAllMedicines() {
-        List<Medicine> medicines = medicineService.findAll();
-        List<MedicineDTO> dtoList = medicines.stream()
-                .map(med -> new MedicineDTO(
-                        med.getId(),
-                        med.getName(),
-                        med.getDescription(),
-                        med.getPrice(),
-                        med.getStockQuantity(),
-                        med.getExpiryDate(),
-                        med.getImages().stream().map(Image::getUrl).toList()))
-                .toList();
+   @GetMapping("/paginated")
+    public ResponseEntity<Page<MedicineDTO>> getPaginatedMedicines(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "default") String sort
+    ) {
+        Sort sortBy;
 
-        return ResponseEntity.ok(dtoList);
+        switch (sort) {
+            case "priceLowToHigh":
+                sortBy = Sort.by("price").ascending();
+                break;
+            case "priceHighToLow":
+                sortBy = Sort.by("price").descending();
+                break;
+            case "latest":
+                sortBy = Sort.by("expiryDate").descending();
+                break;
+            case "popularity":
+                sortBy = Sort.by("popularity").descending(); 
+                break;
+            default:
+                sortBy = Sort.unsorted();
+                break;
+        }
+
+        Pageable pageable = PageRequest.of(page, size, sortBy);
+        Page<Medicine> medicinePage = medicineService.findAll(pageable);
+
+        Page<MedicineDTO> dtoPage = medicinePage.map(med -> new MedicineDTO(
+                med.getId(),
+                med.getName(),
+                med.getDescription(),
+                med.getPrice(),
+                med.getStockQuantity(),
+                med.getExpiryDate(),
+                med.getImages().stream().map(img -> img.getUrl()).collect(Collectors.toList())
+        ));
+
+        return ResponseEntity.ok(dtoPage);
     }
 
     @GetMapping("/{id}")
