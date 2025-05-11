@@ -1,5 +1,6 @@
 package com.project.demo.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,12 +12,19 @@ import com.project.demo.model.Orders;
 import com.project.demo.repository.OrderItemRepository;
 
 @Service
-public class OrderItemService  implements IOrderItemService{
+public class OrderItemService implements IOrderItemService {
     @Autowired
     private OrderItemRepository itemRepo;
 
     public OrderItem createItem(OrderItem item) {
-        return itemRepo.save(item);
+        try {
+            item.setCreatedAt(LocalDateTime.now());
+            item.setUpdatedAt(LocalDateTime.now());
+            return itemRepo.save(item);
+        } catch (Exception e) {
+            e.printStackTrace(); // Log lỗi ra console
+            throw e;
+        }
     }
 
     public List<OrderItem> getItemsByOrder(Orders order) {

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const getPaginated = async (page: number, size: number, sort: string = 'default') => {
   const url = new URL('http://localhost:8080/api/medicines/paginated');
   url.searchParams.append('page', page.toString());
@@ -10,10 +12,26 @@ export const getPaginated = async (page: number, size: number, sort: string = 'd
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return await res.json();
 };
-export const getById = async (id: number) => {
-  const res = await fetch(`/api/medicines/${id}`);
+
+export const detailProduct = async (id: number) => {
+  const res = await fetch(`http://localhost:8080/api/medicines/${id}`);
   if (!res.ok) {
     throw new Error(`Không thể lấy dữ liệu sản phẩm id=${id}`);
   }
   return await res.json();
+};
+
+
+
+export const addToCart = async (item: any, quantity: number) => {
+  try {
+    const payload = {
+      ...item,
+      quantity,
+    };
+    const response = await axios.post("http://localhost:8080/order-items", payload);
+    return response.data;
+  } catch (error: any) {
+    return error;
+  }
 };

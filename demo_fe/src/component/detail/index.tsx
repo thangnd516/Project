@@ -1,29 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import "./index.scss";
 
 import * as service from "../../service/apiService";
 import { FaShieldAlt, FaCoins, FaShippingFast } from "react-icons/fa";
 import TabsPolicy from "../../util/CustomTabPanel";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { RootState } from "../../redux/store";
+import { ADD_TO_CART, DECREMENT_QUANTITY, INCREMENT_QUANTITY } from "../../type/UserType";
+
 
 const ProductDetail: React.FC = () => {
-  const { id } = useParams();
+
+
   const [product, setProduct] = useState<any>(null);
-  const [quantity, setQuantity] = useState<number>(1);
   const [selectedImage, setSelectedImage] = useState<string>("");
+  const { id } = useParams<{ id: string }>();
+  const productId = useMemo(() => product?.id, [product?.id]);
+
+  const quantity = useSelector((state: RootState) => {
+    const found = state.cart.cartItems.find(item => item.productId === productId);
+    return found?.quantity || 1;
+  });
+
+  console.log(productId, quantity, "000000000000")
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  if (!id) return;
+
+  const handleIncrement = () => {
+    if (productId) dispatch({ type: INCREMENT_QUANTITY, payload: productId});
+  };
+
+  const handleDecrement = () => {
+    if (productId) dispatch({ type: DECREMENT_QUANTITY, payload: productId});
+  };
+
 
   useEffect(() => {
     const fetchProduct = async () => {
+      if (!id) return;
       try {
-        const res = await service.getById(!id || isNaN(Number(id)));
+        const res = await service.detailProduct(Number(id));
         setProduct(res);
         setSelectedImage(res.images?.[0]?.url);
       } catch (error) {
         console.error("Failed to fetch product:", error);
       }
     };
+
     fetchProduct();
-  }, [id]);
+  }, []);
+
+  if (!product) return null;
+
+  const handleAddToCart = () => {
+    if (!product) {
+      toast.error("Product not found.");
+      return;
+    }
+    dispatch({
+      type: ADD_TO_CART,
+      payload: {
+        productId: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.images?.[0]?.url || "",
+        quantity: 1, // hoặc quantity nếu muốn lấy state hiện tại
+      }
+    }
+    );
+
+    toast.success("Item added to cart.");
+  };
+
+
+
+
+  if (!product || !product.id) return null;
+
 
   return (
     <>
@@ -36,9 +92,8 @@ const ProductDetail: React.FC = () => {
                   key={img.id ?? index}
                   src={img.url}
                   alt={`Thumbnail ${index}`}
-                  className={`w-20 h-20 object-cover border rounded cursor-pointer ${
-                    selectedImage === img.url ? "ring-2 ring-blue-500" : ""
-                  }`}
+                  className={`w-20 h-20 object-cover border rounded cursor-pointer ${selectedImage === img.url ? "ring-2 ring-blue-500" : ""
+                    }`}
                   onClick={() => setSelectedImage(img.url)}
                 />
               ))
@@ -49,8 +104,8 @@ const ProductDetail: React.FC = () => {
 
           <div className="flex-1 flex justify-center items-center h-[400px]">
             <img
-              src={selectedImage || "/placeholder.jpg"}
-              onError={(e) => (e.currentTarget.src = "/placeholder.jpg")}
+              src={selectedImage}
+
               alt="Selected"
               className="max-h-[400px] object-contain"
             />
@@ -65,11 +120,10 @@ const ProductDetail: React.FC = () => {
           <h2 className="text-2xl font-bold">{product?.name}</h2>
 
           <div className="flex items-center gap-3">
-            <span className="text-gray-500 line-through text-3xl">$9.20</span>
-            <span className="text-green-600 text-3xl font-bold">${product?.price || 8}</span>
+            <span className="text-gray-500 line-through text-3xl">${product?.price}</span>
+            <span className="text-green-600 text-3xl font-bold">${product?.price}</span>
           </div>
 
-          <p className="text-red-500">13 products sold in last 6 hours</p>
 
           <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
             <li>Clear and organized storage for your medication.</li>
@@ -79,22 +133,37 @@ const ProductDetail: React.FC = () => {
 
           <div className="flex items-center gap-x-3">
             <div className="flex items-center rounded-xl px-4 py-2 bg-gray-100 w-fit">
-              <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-2 text-lg">–</button>
+              <button
+                type="button"
+                onClick={handleIncrement}
+                className="px-2 text-lg"
+              >
+                –
+              </button>
+
               <span className="mx-3 w-6 text-center">{quantity}</span>
-              <button type="button" onClick={() => setQuantity(quantity + 1)} className="px-2 text-lg">+</button>
+
+              <button
+                type="button"
+                onClick={handleDecrement}
+                className="px-2 text-lg"
+              >
+                +
+              </button>
+
             </div>
 
-            <button type="button" className="bg-blue-700 text-white py-3 w-[20rem] rounded-full text-sm hover:bg-blue-800">Add To Cart</button>
+            <button onClick={handleAddToCart} type="button" className="bg-blue-700 text-white py-3 w-[20rem] rounded-full text-sm hover:bg-blue-800">Add To Cart</button>
           </div>
 
           <button type="button" className="bg-blue-700 text-white py-3 w-[38rem] rounded-full text-sm hover:bg-blue-800">Buy Now</button>
 
-          <div className="flex gap-4 text-sm text-gray-600">
+          {/* <div className="flex gap-4 text-sm text-gray-600">
             <span>✔ Compare</span>
             <span>♥ Wishlist</span>
             <span>❓ Ask Us</span>
             <span>🔗 Share</span>
-          </div>
+          </div> */}
 
           <hr className="text-gray-200" />
           <div className="text-sm text-gray-700 mt-4 space-y-2">

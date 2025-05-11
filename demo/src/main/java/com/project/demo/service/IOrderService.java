@@ -7,4 +7,5 @@ import com.project.demo.model.Orders;
 public interface IOrderService {
     List<Orders> getAllOrders();
     Orders createOrder(Orders order);
+     Orders findById(Long id);
 }

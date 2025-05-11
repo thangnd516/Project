@@ -4,6 +4,9 @@ import health from "../../assets/health-mart-pharmacy-logo.jpg"
 import "./header.scss"
 import SearchDropdown from '../../util/SearchDropdown';
 import { CategoryOption } from '../../type/UserType';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 export const Header = () => {
   const categories: CategoryOption[] = [
@@ -14,6 +17,16 @@ export const Header = () => {
   const handleSearch = (term: string, category: CategoryOption) => {
     console.log('Searching for:', term, 'in category:', category);
   };
+
+  const cartItems = useSelector((state: RootState) => {
+    return state.cart.cartItems;
+  });
+
+
+  const navigate = useNavigate();
+  const totalQuantity = useSelector((state: any) =>
+    state.cart.cartItems.reduce((total: number, item: any) => total + item.quantity, 0)
+  );
   return (
     <header className="header-wrap py-2 bg-white shadow-md">
       <div className="header-container container mx-auto">
@@ -24,7 +37,7 @@ export const Header = () => {
           </a>
 
           {/* Search */}
-          <div style={{display: "flex",justifyContent: "center"}} className="flex-1 mx-8">
+          <div style={{ display: "flex", justifyContent: "center" }} className="flex-1 mx-8">
             <SearchDropdown categories={categories} onSearch={handleSearch} />
           </div>
 
@@ -41,14 +54,14 @@ export const Header = () => {
               </div>
             </div>
 
-            <div className="cart-header-wrap">
+            <div onClick={() => navigate('/cart')} style={{ cursor: 'pointer' }} className="cart-header-wrap">
               <a href="#" className="">
-                <ShoppingCart size={28} className="cart-icon-header" />
+                <ShoppingCart size={28} className="cart-icon-header" values={totalQuantity} />
               </a>
+              {cartItems.length > 0 && <span>{cartItems.length}</span>}
               <div className='cart-content-header'>
                 <span>Cart</span>
                 <span>$35.00</span>
-
               </div>
             </div>
           </div>

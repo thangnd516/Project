@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { FaHeart, FaExchangeAlt, FaGift } from 'react-icons/fa';
 import shipping from "../../assets/free-shipping.png";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { DECREMENT_QUANTITY, INCREMENT_QUANTITY } from "../../type/UserType";
 const CartPage = () => {
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state: RootState) => {
+    return state.cart.cartItems;
+  });
+
   const [items, setItems] = useState([
     {
       id: 1,
@@ -29,8 +38,18 @@ const CartPage = () => {
       )
     );
   };
+  
 
-  const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const handleIncrement = (productId: number) => {
+      dispatch({ type: INCREMENT_QUANTITY, payload: productId});
+    };
+  
+    const handleDecrement = (productId: number) => {
+      dispatch({ type: DECREMENT_QUANTITY, payload: productId});
+    };
+
+
+  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const total = subtotal + shipping;
   const remainingForFreeShipping = 100 - subtotal;
 
@@ -77,8 +96,8 @@ const CartPage = () => {
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => (
-              <tr key={item.id} className="align-middle">
+            {cartItems.map((item) => (
+              <tr key={item.productId} className="align-middle">
                 {/* Product (xóa + ảnh + tên) */}
                 <td className="flex items-center gap-4">
                   <button className="text-red-500 text-xl">&times;</button>
@@ -92,11 +111,11 @@ const CartPage = () => {
                 {/* Quantity */}
                 <td >
                   <div className="flex items-center h-10  rounded " style={{backgroundColor: "rgb(247, 247, 247)",justifyContent: "center"}}>
-                    <button type="button" className="minus px-2" onClick={() => updateQuantity(item.id, -1)}>
+                    <button type="button" className="minus px-2" onClick={() => handleDecrement(item.productId)}>
                       −
                     </button>
                     <div className="flex items-center" style={{width: "2rem",justifyContent: "center"}}>{item.quantity}</div>
-                    <button type="button" className="plus px-2" onClick={() => updateQuantity(item.id, 1)}>
+                    <button type="button" className="plus px-2" onClick={() => handleIncrement(item.productId)}>
                       +
                     </button>
                   </div>
