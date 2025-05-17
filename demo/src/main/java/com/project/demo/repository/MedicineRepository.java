@@ -9,4 +9,6 @@ import com.project.demo.model.Medicine;
 @Repository
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     Page<Medicine> findAll(Pageable pageable);
+
+    Page<Medicine> findByNameContainingIgnoreCase(String keyword, Pageable pageable);
 }

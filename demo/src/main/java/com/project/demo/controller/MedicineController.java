@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.project.demo.DTO.MedicineDTO;
-import com.project.demo.model.Image;
 import com.project.demo.model.Medicine;
 import com.project.demo.service.MedicineService;
 import org.springframework.data.domain.Page;
@@ -22,12 +21,12 @@ public class MedicineController {
     @Autowired
     private MedicineService medicineService;
 
-   @GetMapping("/paginated")
+    @GetMapping("/paginated")
     public ResponseEntity<Page<MedicineDTO>> getPaginatedMedicines(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "default") String sort
-    ) {
+            @RequestParam(defaultValue = "default") String sort,
+            @RequestParam(required = false) String q) {
         Sort sortBy;
 
         switch (sort) {
@@ -41,7 +40,7 @@ public class MedicineController {
                 sortBy = Sort.by("expiryDate").descending();
                 break;
             case "popularity":
-                sortBy = Sort.by("popularity").descending(); 
+                sortBy = Sort.by("popularity").descending();
                 break;
             default:
                 sortBy = Sort.unsorted();
@@ -49,7 +48,13 @@ public class MedicineController {
         }
 
         Pageable pageable = PageRequest.of(page, size, sortBy);
-        Page<Medicine> medicinePage = medicineService.findAll(pageable);
+        Page<Medicine> medicinePage;
+
+        if (q != null && !q.isEmpty()) {
+            medicinePage = medicineService.searchByName(q, pageable);
+        } else {
+            medicinePage = medicineService.findAll(pageable);
+        }
 
         Page<MedicineDTO> dtoPage = medicinePage.map(med -> new MedicineDTO(
                 med.getId(),
@@ -58,8 +63,7 @@ public class MedicineController {
                 med.getPrice(),
                 med.getStockQuantity(),
                 med.getExpiryDate(),
-                med.getImages().stream().map(img -> img.getUrl()).collect(Collectors.toList())
-        ));
+                med.getImages().stream().map(img -> img.getUrl()).collect(Collectors.toList())));
 
         return ResponseEntity.ok(dtoPage);
     }
@@ -85,4 +89,5 @@ public class MedicineController {
         medicineService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 }

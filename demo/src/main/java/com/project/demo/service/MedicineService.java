@@ -33,4 +33,8 @@ public class MedicineService implements IMedicineService {
     public void delete(Long id) {
         medicineRepository.deleteById(id);
     }
+    @Override
+    public Page<Medicine> searchByName(String keyword, Pageable pageable) {
+    return medicineRepository.findByNameContainingIgnoreCase(keyword, pageable);
+}
 }

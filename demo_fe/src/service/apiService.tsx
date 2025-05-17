@@ -35,3 +35,13 @@ export const addToCart = async (item: any, quantity: number) => {
     return error;
   }
 };
+
+export const searchProducts = async (keyword: string, category: string) => {
+  const res = await axios.get('/api/products/search', {
+    params: {
+      q: keyword,
+      category: category !== 'All Categories' ? category : ''
+    }
+  });
+  return res.data;
+};

@@ -12,4 +12,5 @@ public interface IMedicineService {
     Medicine save(Medicine medicine);
 
     void delete(Long id);
+    Page<Medicine> searchByName(String keyword, Pageable pageable);
 }
