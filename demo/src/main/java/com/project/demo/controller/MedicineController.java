@@ -1,5 +1,6 @@
 package com.project.demo.controller;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,11 @@ public class MedicineController {
         return ResponseEntity.ok(dtoPage);
     }
 
+      @GetMapping("/best-selling")
+    public List<Medicine> getBestSellingProducts() {
+        return medicineService.findTop6ByOrderByStockQuantityDesc(); 
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Medicine> getById(@PathVariable Long id) {
         return ResponseEntity.ok(medicineService.findById(id));
@@ -89,5 +95,6 @@ public class MedicineController {
         medicineService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 
 }

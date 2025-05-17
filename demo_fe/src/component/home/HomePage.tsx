@@ -1,16 +1,14 @@
-import { Footer } from "../footer/Footer";
-import { Header } from "../header/Header";
 import { CategoriesSection } from "./CategoriesSection";
 import { FeaturedProduct } from "./FeaturedProduct";
 import { FeaturesSection } from "./FeaturesSection";
 import { HeroSection } from "./HeroSection";
 import { MainNavigation } from "./MainNavigation";
+import PartnerSlider from "./PartnerSlider";
 import products from "./Product";
 import ProductsSection from "./ProductsSection";
-import ProductItem from "./TestimonialItem";
-import TestimonialItem, { ProductItemProps } from "./TestimonialItem";
-import { TopBar } from "./TopBar";
+import ProductItem from "./ProductItem";
 import "./index.scss";
+import { ProductItemProps } from "../../type/UserType";
 // Main App Component
 const HealthMartApp = () => {
   const testimonials = [
@@ -109,14 +107,9 @@ const productData: ProductItemProps[] = [
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <TopBar />
-      <Header />
       <MainNavigation />
       <HeroSection />
       <CategoriesSection/>
-          <div className="category-item-wrap">
-
-          </div>
       <ProductsSection title="Best Sellers" products={products} />
       <FeaturesSection />
       <ProductsSection title="Popular Categories" products={products} showViewMore={true} />
@@ -127,12 +120,7 @@ const productData: ProductItemProps[] = [
           <ProductItem key={index} {...item} />
         ))}
       </div>
-      <Footer />
-
-
-
-
-
+      <PartnerSlider/>
     </div>
   );
 };

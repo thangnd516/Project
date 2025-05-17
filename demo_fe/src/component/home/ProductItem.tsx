@@ -1,14 +1,9 @@
 import React from 'react';
 import "./index.scss";
-export type ProductItemProps = {
-  title: string;
-  image: string;
-  rating: number;
-  originalPrice?: string;
-  salePrice: string;
-};
+import { ProductItemProps } from '../../type/UserType';
 
-const ProductItem: React.FC<ProductItemProps> = ({ title, image, rating, originalPrice, salePrice }) => {
+
+const ProductItem: React.FC<ProductItemProps> = ({ title, image, rating, salePrice }) => {
   const stars = Array.from({ length: 5 }).map((_, index) => (
     <svg
       key={index}

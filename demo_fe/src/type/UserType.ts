@@ -31,12 +31,16 @@ export type UserActionTypes =
   | { type: typeof SET_USER; payload: { account: UserState['account'] } }
   | { type: typeof LOGOUT_USER };
 
-export type Product = {
+export interface Product {
   id: number;
   name: string;
-  price: number;
   image: string;
-};
+  price: number;
+  oldPrice?: number;
+  discount?: string;
+  description?: string;
+}
+
 
 export interface CartItem {
   productId: number;
@@ -45,7 +49,32 @@ export interface CartItem {
   image: string;
   quantity: number;
 }
+export interface Author {
+  id: number;
+  username: string;
+  role: string;
+  createdAt: string | null;
+  updatedAt: string | null;
+}
 
+export interface Blog {
+  id: number;
+  title: string;
+  content: string;
+  excerpt: string;
+  image: string;
+  author: Author;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type ProductItemProps = {
+  title: string;
+  image: string;
+  rating: number;
+  originalPrice?: string;
+  salePrice: string;
+};
 export type CategoryOption = string;
 
 export interface SearchBarProps {

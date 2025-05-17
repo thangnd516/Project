@@ -36,12 +36,31 @@ export const addToCart = async (item: any, quantity: number) => {
   }
 };
 
-export const searchProducts = async (keyword: string, category: string) => {
+export const searchProducts = async (term: string, category: string) => {
   const res = await axios.get('/api/products/search', {
     params: {
-      q: keyword,
+      q: term,
       category: category !== 'All Categories' ? category : ''
     }
   });
+  return res.data;
+};
+
+
+const API_BASE = "http://localhost:8080/api/blogs";
+
+export const getAllBlogs = async () => {
+  const response = await axios.get(API_BASE);
+  return response.data;
+};
+
+export const getBlogById = async (id: number) => {
+  const response = await axios.get(`${API_BASE}/${id}`);
+  return response.data;
+};
+
+
+export const getBestSellingProducts = async () => {
+  const res = await axios.get("http://localhost:8080/api/products/best-selling");
   return res.data;
 };

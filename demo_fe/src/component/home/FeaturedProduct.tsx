@@ -1,6 +1,6 @@
 export const FeaturedProduct = () => {
   return (
-    <div style={{padding: "0 69px"}} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div style={{padding: "0 184px"}} className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Left block: MamyPoko Pants Deal */}
       <div className="relative rounded-lg overflow-hidden h-56 md:h-64">
         <img
