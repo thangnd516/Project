@@ -81,3 +81,15 @@ export interface SearchBarProps {
   categories: CategoryOption[];
   onSearch: (term: string, category: CategoryOption) => void;
 }
+export type Item = {
+  id: number;
+  name: string;
+  url: string;
+  icon?: string;
+};
+
+export type ItemsList = {
+  id: number;
+  title: string;
+  items: Item[];
+};

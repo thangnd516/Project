@@ -1,4 +1,4 @@
-import { Navigate, Route, Router, Routes } from 'react-router-dom';
+import { Navigate, Route, Router, RouterProvider, Routes } from 'react-router-dom';
 import './App.css';
 import CartPage from './component/cart';
 import ProductDetail from './component/detail';
@@ -22,8 +22,6 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
-
-
 
       </Routes>
       <Footer />

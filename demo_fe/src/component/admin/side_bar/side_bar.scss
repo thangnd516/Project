@@ -1,0 +1,38 @@
+
+.side-bar {
+  padding: 16px;
+  overflow: hidden;
+  &:hover {
+    overflow-y: scroll;
+  }
+  .content-side-bar {
+    position: relative;
+
+    color: rgb(121, 121, 121);
+    margin-top: 24px;
+    margin-bottom: 8px;
+    .icon-sidebar {
+      position: absolute;
+      left: 0;
+      color: red;
+    }
+    div {
+      border-bottom: 1px rgb(242, 243, 244) solid;
+      padding: 4px 0px 3px;
+      width: 90%;
+    }
+    a {
+      margin: 5px 0px;
+      padding: 5px 0 10px 20px;
+      color: #171d24;
+      display: block;
+      text-decoration: none;
+      &:hover {
+        color: red;
+      }
+      &.active {
+        color: red;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.content-admin-wrap {
+    display: flex;
+    padding: 20px;
+    .content-admin-left {
+        width: 30%;
+    }
+
+    .content-admin-right {
+        width: 70%;
+    }
+}
