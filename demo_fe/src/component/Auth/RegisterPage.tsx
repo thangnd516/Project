@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const LoginPage = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+const RegisterPage = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -11,15 +10,24 @@ const LoginPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login with:", formData);
-    // TODO: Gọi API đăng nhập
+    console.log("Register with:", formData);
+    // TODO: Gọi API đăng ký
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            className="w-full px-4 py-2 border rounded-lg"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
           <input
             type="email"
             name="email"
@@ -38,14 +46,14 @@ const LoginPage = () => {
             onChange={handleChange}
             required
           />
-          <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-            Login
+          <button className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+            Register
           </button>
         </form>
         <p className="mt-4 text-center">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-blue-600 font-semibold">
-            Register
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-600 font-semibold">
+            Login
           </Link>
         </p>
       </div>
@@ -53,4 +61,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

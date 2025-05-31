@@ -1,0 +1,70 @@
+🩺 1. Tính năng dành cho người dùng
+🔍 Tìm kiếm & tra cứu thuốc
+Tìm kiếm theo tên thuốc, hoạt chất, công dụng, hãng sản xuất
+
+Lọc theo phân loại: kê đơn / không kê đơn, giá, hình thức (viên, dung dịch,...)
+
+🛒 Đặt hàng và giỏ hàng
+Thêm thuốc vào giỏ
+
+Chọn số lượng, loại đơn vị (vỉ/hộp)
+
+Mua lại đơn hàng cũ
+
+📦 Theo dõi đơn hàng
+Trạng thái đơn (đang xử lý, đang giao, đã giao)
+
+Xem lịch sử đơn hàng và xuất hóa đơn
+
+💳 Thanh toán
+Thanh toán online (Momo, ZaloPay, VNPay, thẻ ngân hàng)
+
+COD (thu tiền khi giao hàng)
+
+📁 Quản lý đơn thuốc
+Tải đơn thuốc từ ảnh / file PDF
+
+Tư vấn thuốc dựa trên đơn
+
+Lưu đơn thuốc cũ để dùng lại
+
+📞 Tư vấn trực tuyến
+Chat với dược sĩ
+
+Gọi video (nếu có hợp tác chuyên môn)
+
+Tư vấn thay thế thuốc tương đương
+
+🔔 Nhắc nhở uống thuốc & tái mua
+Hẹn giờ nhắc uống
+
+Gợi ý mua lại sau 1 tháng
+
+🧑‍💼 2. Tính năng dành cho quản trị (Admin / Nhà thuốc)
+Quản lý sản phẩm: cập nhật giá, tồn kho
+
+Quản lý đơn hàng: xử lý, phân loại, vận chuyển
+
+Quản lý đơn thuốc: kiểm tra và xác nhận đơn kê
+
+Báo cáo doanh thu, thống kê bán chạy
+
+Quản lý khách hàng & chăm sóc sau mua
+
+📜 3. Tính năng liên quan pháp lý & chất lượng
+Xác minh đơn thuốc với bác sĩ (cho thuốc kê đơn)
+
+Ghi chú cảnh báo / hướng dẫn sử dụng
+
+Chứng nhận thuốc (GPP, GSP, hạn dùng,...)
+
+Xác thực nguồn gốc thuốc (chống hàng giả)
+
+💡 Gợi ý nâng cao (khác biệt hóa)
+Giao nhanh 2H nội thành
+
+Tích điểm, hoàn tiền
+
+Hợp tác bảo hiểm y tế
+
+AI tư vấn tự động (như chatbot dược sĩ)

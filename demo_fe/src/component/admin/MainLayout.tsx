@@ -1,8 +1,7 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useRoutes } from "react-router-dom";
+import { ItemsList } from "../../type/UserType";
 import { Header } from "../header/Header";
 import SideBar from "./side_bar";
-import { ItemsList } from "../../type/UserType";
 type Props = {
   children: React.ReactNode;
 };
@@ -14,25 +13,25 @@ export const mockItemsList: ItemsList[] = [
       {
         id: 101,
         name: "Google",
-        url: "https://www.google.com",
+        path: "google",
         icon: "https://cdn-icons-png.flaticon.com/512/300/300221.png"
       },
       {
         id: 102,
         name: "YouTube",
-        url: "https://www.youtube.com",
+        path: "youtube",
         icon: "https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
       },
       {
         id: 103,
         name: "Github",
-        url: "https://github.com",
+        path: "github",
         icon: "https://cdn-icons-png.flaticon.com/512/733/733553.png"
       },
       {
         id: 104,
         name: "Stack Overflow",
-        url: "https://stackoverflow.com",
+        path: "stackoverflow",
         icon: "https://cdn-icons-png.flaticon.com/512/2111/2111628.png"
       }
     ]
@@ -40,7 +39,6 @@ export const mockItemsList: ItemsList[] = [
 ];
 
 function MainLayout({ children }: Props) {
-
 
   return (
     <div className="wrapper">

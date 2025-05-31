@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Medicine } from '../type/UserType';
 
 export const getPaginated = async (page: number, size: number, sort: string = 'default') => {
   const url = new URL('http://localhost:8080/api/medicines/paginated');
@@ -64,3 +65,15 @@ export const getBestSellingProducts = async () => {
   const res = await axios.get("http://localhost:8080/api/products/best-selling");
   return res.data;
 };
+
+
+const createMedicine = async (medicineData :Medicine) => {
+  const res = await axios.post("/api/medicines", medicineData);
+  return res.data;
+};
+
+const updateMedicine = async (medicineData: Medicine) => {
+  const res = await axios.put(`/api/medicines/${medicineData.id}`, medicineData);
+  return res.data;
+};
+

@@ -16,7 +16,7 @@ function SideBar({ items }: { items: ItemsList[] }) {
                 {itemsList.items.map((item, index) => (
                   <Link
                     key={index}
-                    to={`/${item.url}`}
+                    to={`/admin/${item.path}`}
                     className={""}
                   >
                     <IconBase className="icon-sidebar" name={item.icon} />

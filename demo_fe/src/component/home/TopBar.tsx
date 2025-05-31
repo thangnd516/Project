@@ -1,5 +1,5 @@
 
-import { User } from 'lucide-react';
+import { Link, User } from 'lucide-react';
 
 // TopBar Component
 export const TopBar = () => {

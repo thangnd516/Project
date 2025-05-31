@@ -84,7 +84,7 @@ export interface SearchBarProps {
 export type Item = {
   id: number;
   name: string;
-  url: string;
+  path: string;
   icon?: string;
 };
 
@@ -93,3 +93,17 @@ export type ItemsList = {
   title: string;
   items: Item[];
 };
+
+
+export interface Medicine {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  stock_quantity: number;
+  expiry_date: string;
+  category_id: number;
+  manufacturer_id: number;
+  created_at: string;
+  updated_at: string;
+}
