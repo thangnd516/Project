@@ -29,12 +29,10 @@ const MedicineForm: React.FC<Props> = ({ isOpen, onClose, onSubmit, medicine }) 
       price: 0,
       stockQuantity: 0,
       expiryDate: "",
-      categoryId: 0,
       manufacturerId: 0,
       created_at: "",
       updated_at: "",
       categoryName: "",
-      images: [],
     }
   );
 
@@ -46,7 +44,12 @@ const MedicineForm: React.FC<Props> = ({ isOpen, onClose, onSubmit, medicine }) 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: name === "price" || name === "stockQuantity" || name === "categoryId" || name === "manufacturerId" ? Number(value) : value });
+    setForm({
+      ...form,
+      [name]: ["price", "stockQuantity", "categoryId", "manufacturerId"].includes(name)
+        ? Number(value)
+        : value,
+    });
   };
 
   const handleSubmit = () => {
@@ -75,7 +78,7 @@ const MedicineForm: React.FC<Props> = ({ isOpen, onClose, onSubmit, medicine }) 
           <FormLabel className="mt-2">Hạn sử dụng</FormLabel>
           <Input name="expiryDate" type="date" value={form.expiryDate.slice(0, 10)} onChange={handleChange} />
 
-          <FormLabel className="mt-2">ID Danh mục</FormLabel>
+          <FormLabel className="mt-2">ID Danh mục ({form.categoryName})</FormLabel>
           <Input name="categoryId" type="number" value={form.categoryName} onChange={handleChange} />
 
           <FormLabel className="mt-2">ID Nhà sản xuất</FormLabel>

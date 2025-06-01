@@ -44,7 +44,8 @@
     "redux": "^5.0.1",
     "redux-persist": "6.0.0",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.17.2"
+    "sweetalert2": "^11.17.2",
+    "tesseract.js": "^6.0.1"
   },
   "devDependencies": {
     "@chakra-ui/button": "^2.1.0",

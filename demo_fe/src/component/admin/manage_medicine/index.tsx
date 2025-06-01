@@ -3,7 +3,7 @@ import { Medicine } from "../../../type/UserType";
 import * as service from "../../../service/apiService";
 import { toast } from "react-toastify";
 import { MedicineTable } from "./MedicinceAdmin";
-import { MedicineForm } from "./MedicineForm";
+import MedicineForm from "./MedicineForm";
 
 const MedicineListPage: React.FC = () => {
   const [medicines, setMedicines] = useState<Medicine[]>([]);
@@ -58,18 +58,17 @@ const MedicineListPage: React.FC = () => {
     setIsFormOpen(true);
   };
 
-  const handleAddNew = () => {
+  const handleAdd = () => {
     setEditingMedicine(null);
     setIsFormOpen(true);
   };
-
   return (
     <div className="p-6">
       <MedicineTable
         medicines={medicines}
         onDelete={handleDelete}
         onEdit={handleEdit}
-        onAdd={handleAddNew}
+        onAdd={handleAdd}
       />
       <MedicineForm
         isOpen={isFormOpen}

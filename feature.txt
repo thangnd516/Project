@@ -9,37 +9,14 @@ Thêm thuốc vào giỏ
 
 Chọn số lượng, loại đơn vị (vỉ/hộp)
 
-Mua lại đơn hàng cũ
 
-📦 Theo dõi đơn hàng
-Trạng thái đơn (đang xử lý, đang giao, đã giao)
-
-Xem lịch sử đơn hàng và xuất hóa đơn
 
 💳 Thanh toán
 Thanh toán online (Momo, ZaloPay, VNPay, thẻ ngân hàng)
 
-COD (thu tiền khi giao hàng)
 
 📁 Quản lý đơn thuốc
 Tải đơn thuốc từ ảnh / file PDF
-
-Tư vấn thuốc dựa trên đơn
-
-Lưu đơn thuốc cũ để dùng lại
-
-📞 Tư vấn trực tuyến
-Chat với dược sĩ
-
-Gọi video (nếu có hợp tác chuyên môn)
-
-Tư vấn thay thế thuốc tương đương
-
-🔔 Nhắc nhở uống thuốc & tái mua
-Hẹn giờ nhắc uống
-
-Gợi ý mua lại sau 1 tháng
-
 🧑‍💼 2. Tính năng dành cho quản trị (Admin / Nhà thuốc)
 Quản lý sản phẩm: cập nhật giá, tồn kho
 
@@ -68,3 +45,30 @@ Tích điểm, hoàn tiền
 Hợp tác bảo hiểm y tế
 
 AI tư vấn tự động (như chatbot dược sĩ)
+
+🔥 TÍNH NĂNG NÂNG CAO VÀ KHÁC BIỆT HÓA
+🧑‍⚕️ 1. Tư vấn sức khỏe với AI hoặc bác sĩ thật
+Chatbot tư vấn các triệu chứng cơ bản (dùng GPT hoặc rule-based)
+
+Đặt lịch hẹn với bác sĩ tư vấn từ xa
+
+Lưu lịch sử trò chuyện và đơn thuốc
+
+💌 4. Gửi thông báo (Notification/Email/SMS)
+Gợi ý tái mua thuốc sau 20-30 ngày
+
+Nhắc khách uống thuốc định kỳ
+
+Gửi thông tin khuyến mãi hoặc voucher cá nhân hóa
+
+
+🌐 6. Đa ngôn ngữ & đa khu vực
+Hỗ trợ tiếng Việt/Anh
+
+
+
+🧾 3. Quét toa thuốc bằng OCR / AI
+Upload ảnh đơn thuốc → hệ thống tự nhận diện tên thuốc, liều lượng, ngày dùng
+
+
+

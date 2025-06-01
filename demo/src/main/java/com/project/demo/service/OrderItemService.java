@@ -22,7 +22,7 @@ public class OrderItemService implements IOrderItemService {
             item.setUpdatedAt(LocalDateTime.now());
             return itemRepo.save(item);
         } catch (Exception e) {
-            e.printStackTrace(); // Log lỗi ra console
+            e.printStackTrace();
             throw e;
         }
     }
