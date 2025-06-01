@@ -12,6 +12,7 @@ import { TopBar } from './component/home/TopBar';
 import ProductsPage from './component/product';
 import RegisterPage from './component/Auth/RegisterPage';
 import LoginPage from './component/Auth/Login';
+import MedicineListPage from './component/admin/manage_medicine';
 function App() {
 
   return (
@@ -32,6 +33,8 @@ function App() {
      
           <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/admin/product" element={<MedicineListPage />} />
+
 
 
 

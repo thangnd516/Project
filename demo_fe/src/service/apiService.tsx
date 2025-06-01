@@ -67,13 +67,20 @@ export const getBestSellingProducts = async () => {
 };
 
 
-const createMedicine = async (medicineData :Medicine) => {
+
+
+export const createMedicine = async (medicineData :Medicine) => {
   const res = await axios.post("/api/medicines", medicineData);
   return res.data;
 };
 
-const updateMedicine = async (medicineData: Medicine) => {
+ export const updateMedicine = async (medicineData: Medicine) => {
   const res = await axios.put(`/api/medicines/${medicineData.id}`, medicineData);
   return res.data;
+};
+
+
+export const deleteMedicineById = async (id: number): Promise<void> => {
+    await axios.delete(`/api/medicines/${id}`);
 };
 

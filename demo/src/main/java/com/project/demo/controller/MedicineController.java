@@ -40,9 +40,6 @@ public class MedicineController {
             case "latest":
                 sortBy = Sort.by("expiryDate").descending();
                 break;
-            case "popularity":
-                sortBy = Sort.by("popularity").descending();
-                break;
             default:
                 sortBy = Sort.unsorted();
                 break;
@@ -64,14 +61,22 @@ public class MedicineController {
                 med.getPrice(),
                 med.getStockQuantity(),
                 med.getExpiryDate(),
-                med.getImages().stream().map(img -> img.getUrl()).collect(Collectors.toList())));
+                med.getImages().stream().map(img -> img.getUrl()).collect(Collectors.toList()),
+                med.getCategory() != null ? med.getCategory().getName() : null));
 
         return ResponseEntity.ok(dtoPage);
     }
 
-      @GetMapping("/best-selling")
+    // admin product
+    @GetMapping
+    public ResponseEntity<List<MedicineDTO>> getAllMedicines() {
+        List<MedicineDTO> medicines = medicineService.getAllMedicines();
+        return ResponseEntity.ok(medicines);
+    }
+
+    @GetMapping("/best-selling")
     public List<Medicine> getBestSellingProducts() {
-        return medicineService.findTop6ByOrderByStockQuantityDesc(); 
+        return medicineService.findTop6ByOrderByStockQuantityDesc();
     }
 
     @GetMapping("/{id}")
@@ -95,6 +100,5 @@ public class MedicineController {
         medicineService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 
 }

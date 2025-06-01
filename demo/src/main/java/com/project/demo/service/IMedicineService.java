@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import com.project.demo.DTO.MedicineDTO;
 import com.project.demo.model.Medicine;
 
 public interface IMedicineService {
     Page<Medicine> findAll(Pageable pageable);
+
+    List<MedicineDTO> getAllMedicines();
 
     Medicine findById(Long id);
 
@@ -18,4 +22,5 @@ public interface IMedicineService {
     Page<Medicine> searchByName(String keyword, Pageable pageable);
 
     List<Medicine> findTop6ByOrderByStockQuantityDesc();
+
 }

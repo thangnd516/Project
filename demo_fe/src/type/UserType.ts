@@ -100,10 +100,10 @@ export interface Medicine {
   name: string;
   description: string;
   price: number;
-  stock_quantity: number;
-  expiry_date: string;
-  category_id: number;
-  manufacturer_id: number;
+  stockQuantity: number;
+  expiryDate: string;
+  categoryName: string;
+  manufacturerId: number;
   created_at: string;
   updated_at: string;
 }

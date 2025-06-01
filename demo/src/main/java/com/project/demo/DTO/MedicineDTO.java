@@ -23,6 +23,7 @@ public class MedicineDTO {
     private Integer stockQuantity;
     private Date expiryDate;
     private List<String> images;
+    private String categoryName;
 
     public MedicineDTO(Medicine medicine) {
         this.id = medicine.getId();
@@ -34,5 +35,7 @@ public class MedicineDTO {
         this.images = medicine.getImages().stream()
                 .map(Image::getUrl)
                 .collect(Collectors.toList());
+        this.categoryName = (medicine.getCategory() != null) ? medicine.getCategory().getName() : null;
     }
+   
 }

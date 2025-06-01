@@ -16,7 +16,7 @@ type ProductCardItem = {
 const ProductsPage: React.FC = () => {
     const [products, setProducts] = useState<ProductCardItem[]>([]);
     const [sortOption, setSortOption] = useState<
-        'default' | 'popularity' | 'latest' | 'priceLowToHigh' | 'priceHighToLow'
+        'default' | 'latest' | 'priceLowToHigh' | 'priceHighToLow'
     >('default');
 
     const [page, setPage] = useState(0);

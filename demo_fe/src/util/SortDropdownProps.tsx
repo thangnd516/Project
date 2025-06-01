@@ -2,7 +2,6 @@ import React from 'react';
 
 type SortOption =
   | 'default'
-  | 'popularity'
   | 'latest'
   | 'priceLowToHigh'
   | 'priceHighToLow';
@@ -22,7 +21,6 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ value, onChange }) => {
         className="border rounded px-3 py-1 text-sm"
       >
         <option value="default">Default sorting</option>
-        <option value="popularity">Sort by popularity</option>
         <option value="latest">Sort by latest</option>
         <option value="priceLowToHigh">Sort by price: low to high</option>
         <option value="priceHighToLow">Sort by price: high to low</option>
