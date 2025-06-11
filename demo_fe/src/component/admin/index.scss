@@ -1,0 +1,12 @@
+.admin-sidebar li {
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.admin-sidebar li:hover,
+.admin-sidebar li.active {
+  background-color: #444;
+  color: #fff;
+}

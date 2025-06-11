@@ -107,3 +107,10 @@ export interface Medicine {
   created_at: string;
   updated_at: string;
 }
+
+export interface User {
+  username: string;
+  role: string;
+  createdAt: string;  // ISO string
+  updatedAt: string;  // ISO string
+}

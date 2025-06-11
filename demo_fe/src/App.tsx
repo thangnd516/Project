@@ -37,15 +37,6 @@ function App() {
         <Route path="/admin/manufactory" element={<ManufacturerManager />} />
         <Route path="/admin/customer" element={<CustomerManager />} />
         <Route path="/fax" element={<FAQPage />} />
-
-
-dđ
-
-
-
-
-
-
       </Routes>
       <Footer />
     </>
