@@ -2,7 +2,7 @@
     .herro-section-content-first {
         img {
 
-            height: 14rem;
+            height: 16rem;
             padding-bottom: 20px;
             border-radius: 15px;
 
@@ -138,4 +138,10 @@
     color: black;
     font-size: 18px;
     font-weight: 600;
+}
+
+.category-menu-wrap {
+    display: flex;
+    border: 1px solid #eee;
+    padding: 10px 77px;
 }

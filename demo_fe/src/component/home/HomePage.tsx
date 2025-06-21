@@ -2,13 +2,13 @@ import { CategoriesSection } from "./CategoriesSection";
 import { FeaturedProduct } from "./FeaturedProduct";
 import { FeaturesSection } from "./FeaturesSection";
 import { HeroSection } from "./HeroSection";
-import { MainNavigation } from "./MainNavigation";
 import PartnerSlider from "./PartnerSlider";
 import products from "./Product";
 import ProductsSection from "./ProductsSection";
 import ProductItem from "./ProductItem";
 import "./index.scss";
 import { ProductItemProps } from "../../type/UserType";
+import CategoryMenu from "./CategoryMenu";
 // Main App Component
 const HealthMartApp = () => {
   const testimonials = [
@@ -43,7 +43,7 @@ const HealthMartApp = () => {
       image: "/api/placeholder/64/64"
     }
   ];
-const productData: ProductItemProps[] = [
+  const productData: ProductItemProps[] = [
     {
       title: "Kudos Shatavari Ayurveda-Brahmi Women's Wellness",
       image: "https://wordpressthemes.live/WCG10/WCM230_healthmart/medicine04/wp-content/uploads/2023/10/21-300x300.jpg",
@@ -103,24 +103,26 @@ const productData: ProductItemProps[] = [
       salePrice: "8–20",
     },
   ];
-  
+
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MainNavigation />
+      <div className="category-menu-wrap">
+        <CategoryMenu />
+      </div>
       <HeroSection />
-      <CategoriesSection/>
+      <CategoriesSection />
       <ProductsSection title="Best Sellers" products={products} />
       <FeaturesSection />
       <ProductsSection title="Popular Categories" products={products} showViewMore={true} />
       <FeaturedProduct />
       <h3 className="elementor-heading-title">Don’t Miss Our Discounts!</h3>
       <div className="testimonial-item-wrap">
-      {productData.map((item, index) => (
+        {productData.map((item, index) => (
           <ProductItem key={index} {...item} />
         ))}
       </div>
-      <PartnerSlider/>
+      <PartnerSlider />
     </div>
   );
 };

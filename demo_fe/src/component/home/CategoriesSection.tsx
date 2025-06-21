@@ -15,7 +15,7 @@ export const CategoriesSection = () => {
     <section className="py-10">
       <div className="container mx-auto">
         <h2 className="text-xl font-semibold text-center mb-6">Top Categories</h2>
-        <div className="flex justify-center flex-wrap gap-6">
+        <div className="flex justify-center flex-wrap gap-20">
           {categories.map((category, index) => (
             <a
               key={index}
